@@ -1,0 +1,235 @@
+/* ═══════════════════════════════════════════
+   Financial Spending Insights — Design System
+   Liquid Glass / Frosted Acrylic / Spatial UI
+   ═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── Palette ── */
+  --bg-deep: #08090c;
+  --bg-base: #0c0d12;
+  --bg-elevated: #12141b;
+  --bg-surface: #181a23;
+  --bg-hover: #1e2130;
+
+  /* Glass layers */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg-hover: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-border-hover: rgba(255, 255, 255, 0.1);
+  --glass-glow: rgba(255, 255, 255, 0.02);
+
+  /* Text */
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-tertiary: rgba(255, 255, 255, 0.32);
+  --text-accent: #7c8aff;
+
+  /* Accent — calm indigo */
+  --accent: #6c7aee;
+  --accent-hover: #8490ff;
+  --accent-subtle: rgba(108, 122, 238, 0.12);
+  --accent-glow: rgba(108, 122, 238, 0.25);
+
+  /* Semantic */
+  --positive: #4ecdc4;
+  --positive-subtle: rgba(78, 205, 196, 0.12);
+  --warning: #f9ca24;
+  --warning-subtle: rgba(249, 202, 36, 0.12);
+  --negative: #ff6b6b;
+  --negative-subtle: rgba(255, 107, 107, 0.12);
+
+  /* Category palette (muted, intentional) */
+  --cat-dining: #ff6b6b;
+  --cat-groceries: #4ecdc4;
+  --cat-transport: #45b7d1;
+  --cat-shopping: #96ceb4;
+  --cat-subscriptions: #a78bfa;
+  --cat-utilities: #f9ca24;
+  --cat-health: #ff8a80;
+  --cat-entertainment: #69db7c;
+  --cat-travel: #74b9ff;
+  --cat-education: #fd79a8;
+  --cat-insurance: #fdcb6e;
+  --cat-transfers: #81ecec;
+  --cat-uncategorized: #636e72;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px rgba(108, 122, 238, 0.08);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Typography Scale ── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--text-accent);
+  text-decoration: none;
+  transition: color 0.2s var(--ease-out);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--accent-subtle);
+  color: var(--text-primary);
+}
+
+/* ── Glass Surface ── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+
+.glass:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+}
+
+/* ── Ambient Background ── */
+.ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-bg::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -20%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(108, 122, 238, 0.06) 0%, transparent 70%);
+  animation: ambientDrift 25s ease-in-out infinite alternate;
+}
+
+.ambient-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -20%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(78, 205, 196, 0.04) 0%, transparent 70%);
+  animation: ambientDrift 30s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ambientDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, 3%) scale(1.05); }
+  100% { transform: translate(-3%, -2%) scale(0.98); }
+}
+
+/* ── Focus styles ── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Utility ── */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  letter-spacing: -0.01em;
+}
