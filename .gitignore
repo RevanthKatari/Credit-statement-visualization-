@@ -1,1 +1,10 @@
-node_modules/\nserver/data/\nserver/uploads/\n.env\ndist/
+node_modules/
+**/node_modules/
+server/data/
+server/uploads/
+.env
+*.env
+dist/
+*.db
+*.db-shm
+*.db-wal
